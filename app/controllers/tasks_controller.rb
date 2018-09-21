@@ -51,13 +51,13 @@ class TasksController < ApplicationController
   def mark_complete
 
     @task = Task.find_by(id: params[:id].to_i)
-    if @task.completion_date = nil
-      @task.completion_date = "#{Date.today}"
+    if @task.completion_date == nil
+      new_date = "#{Date.today}"
     else
-      @task.completion_date = nil
+      new_date = nil
     end
 
-    @task.update
+    @task.update(completion_date: new_date)
     redirect_to root_path
   end
 

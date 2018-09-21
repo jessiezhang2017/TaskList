@@ -6,21 +6,31 @@
   <ol>
     <% @tasks.each do |task| %>
       <li>
+        <h3>
+            <%= "#{task.name}"%>
+        </h3>
         <p>
-            <%= "#{task.name}" %>
+            <%= "Description: #{task.description} || Completion_date: #{task.completion_date}" %>
         </p>
-        <p>
-          <% if task.completion_date == nil %>
+        <p id="action">
+          <% if task.completion_date != nil %>
+            <section class="complete">
+          <%else%>
+            <section>
+          <%end%>
+          <% if task.completion_date != nil %>
             <%= link_to "Mark Complete", mark_complete_path(task.id), method: :patch %>
-            <%else%>
+          <%else%>
             <%= link_to "Unmark Complete", mark_complete_path(task.id), method: :patch %>
-          <% end%>
+          <%end%>
+             </section>
 
-          <%=link_to "Edit", edit_task_path(task.id)%>
-          <%=link_to "Delete", task_path(task.id), method: :delete%>
+               <%=link_to "Edit", edit_task_path(task.id)%>
+
+
+              <%=link_to "Delete", task_path(task.id), method: :delete , data: {confirm: "Are you sure?"}%>
         </p>
       </li>
-
 
 
     <% end %>
