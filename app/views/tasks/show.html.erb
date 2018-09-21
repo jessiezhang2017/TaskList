@@ -1,0 +1,9 @@
+<% if @task.nil? %>
+  <h1> 404 Not found</h1>
+<% else %>
+  <h1><%=@task.name %></h1>
+  <p> current status: <%= @task.description %> </p>
+   <%= line_to "Edit", edit_task_path(@task.id)%>
+
+  <p> completion date: <%= @task.completion_date %></p>
+<% end %>

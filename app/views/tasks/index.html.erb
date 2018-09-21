@@ -1,0 +1,28 @@
+
+
+<section>
+
+  <h2>YOUR TASKS<h2>
+  <ol>
+    <% @tasks.each do |task| %>
+      <li>
+        <p>
+            <%= "#{task.name}" %>
+        </p>
+        <p>
+          <% if task.completion_date == nil %>
+            <%= link_to "Mark Complete", mark_complete_path(task.id), method: :patch %>
+            <%else%>
+            <%= link_to "Unmark Complete", mark_complete_path(task.id), method: :patch %>
+          <% end%>
+
+          <%=link_to "Edit", edit_task_path(task.id)%>
+          <%=link_to "Delete", task_path(task.id), method: :delete%>
+        </p>
+      </li>
+
+
+
+    <% end %>
+  </ol>
+</section>
