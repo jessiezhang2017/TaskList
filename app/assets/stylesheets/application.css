@@ -17,9 +17,11 @@
    display: grid;
    grid-template-columns: 3fr 7fr;
    grid-template-rows: 1fr 8fr 1fr;
-   margin: 5%;
+   margin: 0 10%;
 
  }
+
+
 
  nav {
 
@@ -38,7 +40,7 @@
 
  nav li {
 
-   padding: 5%;
+   padding-bottom: 10%;
    color: blue;
  }
 

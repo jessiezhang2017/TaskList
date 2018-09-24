@@ -38,7 +38,7 @@ class TasksController < ApplicationController
     @task = Task.find_by(id: params[:id].to_i)
     @task.update(task_params)
 
-    redirect_to task_path(task.id)
+    redirect_to root_path
   end
 
   def destroy
@@ -64,7 +64,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      return params.require(:task).permit(:name, :description, :completion_date)
+      return params.require(:task).permit(:name, :description)
     end
 
 end

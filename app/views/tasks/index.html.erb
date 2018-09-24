@@ -2,7 +2,7 @@
 
 <section>
 
-  <h2>YOUR TASKS<h2>
+  <h2>YOUR TASKS</h2>
   <ol>
     <% @tasks.each do |task| %>
       <li>
@@ -12,26 +12,28 @@
         <p>
             <%= "Description: #{task.description} || Completion_date: #{task.completion_date}" %>
         </p>
-        <p id="action">
-          <% if task.completion_date != nil %>
-            <section class="complete">
-          <%else%>
-            <section>
-          <%end%>
-          <% if task.completion_date != nil %>
-            <%= link_to "Mark Complete", mark_complete_path(task.id), method: :patch %>
-          <%else%>
-            <%= link_to "Unmark Complete", mark_complete_path(task.id), method: :patch %>
-          <%end%>
-             </section>
+        <ul>
+          <li>
 
-               <%=link_to "Edit", edit_task_path(task.id)%>
+            <% if task.completion_date != nil %>
+              <section class="complete">
+            <%else%>
+              <section>
+            <%end%>
 
+            <% if task.completion_date != nil %>
+              <%= link_to "Unmark Complete", mark_complete_path(task.id), method: :patch %>
+            <%else%>
+              <%= link_to "Mark Complete", mark_complete_path(task.id), method: :patch %>
+            <%end%>
 
-              <%=link_to "Delete", task_path(task.id), method: :delete , data: {confirm: "Are you sure?"}%>
-        </p>
+            </section>
+          </li>
+
+          <li><%=link_to "Edit", edit_task_path(task.id)%></li>
+          <li><%=link_to "Delete", task_path(task.id), method: :delete , data: {confirm: "Are you sure?"}%></li>
+        </ul>
       </li>
-
 
     <% end %>
   </ol>
